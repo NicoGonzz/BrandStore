@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
+import { Product } from '../../models/product.model';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +13,7 @@ export class HeaderComponent {
   isProductMenuOpen = false;
   isDropdownOpen = false;
   hideSideMenu = signal(true);
+  @Input({required: true}) cart: Product[] = [];
 
   toggleProductMenu(): void {
     this.isProductMenuOpen = !this.isProductMenuOpen;
