@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +11,7 @@ import { Component } from '@angular/core';
 export class HeaderComponent {
   isProductMenuOpen = false;
   isDropdownOpen = false;
+  hideSideMenu = signal(true);
 
   toggleProductMenu(): void {
     this.isProductMenuOpen = !this.isProductMenuOpen;
@@ -23,4 +24,9 @@ export class HeaderComponent {
   toggleDropdown(isOpen: boolean): void {
     this.isDropdownOpen = isOpen;
   }
+
+  toogleSideMenu(){
+    this.hideSideMenu.update(prevState => !prevState);
+  }
+
 }
