@@ -4,7 +4,7 @@
     <!-- Logo -->
     <div class="flex lg:flex-1">
       <a href="#" class="-m-1.5 p-1.5">
-        <span class="sr-only">Your Company</span>
+        <span class="sr-only">Brand Store</span>
         <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=white&shade=600" alt="">
       </a>
     </div>
@@ -49,7 +49,7 @@
         </div>
       </div>
       <!-- Pricing Link -->
-      <a href="#" class="text-sm font-semibold text-white">Pricing</a>
+      <a href="#" class="text-sm font-semibold text-white">Payment gateways</a>
       <!-- Docs Link -->
       <a href="#" class="text-sm font-semibold text-white">Docs</a>
     </div>
@@ -66,37 +66,44 @@
       </svg>
       <span class="sr-only">Carrito</span>
 
-      <span *ngIf="cart.length > 0" class="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
-        {{ cart.length }}
+      <span *ngIf="cart().length > 0" class="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+        {{ cart().length }}
       </span>
     </button>
       
     <!-- Side Menu -->
     <div
-      class="fixed border-l-4 top-0 right-0 z-40 w-72 h-screen p-4 overflow-y-auto transition-transform bg-gray-800"
-      [class.translate-x-full]="hideSideMenu()"
-    >
-      <div class="flex justify-between items-center text-white">
-        <p class="text-xl">My Cart</p>
-        <button class="p2 border rounded relative" (click)="toogleSideMenu()">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="w-6 h-6 text-white"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </div>
-      <div class="text-white" *ngFor="let product of cart">
-        <p>{{product.title}}</p>
-        <img src="{{product.image}}" alt="">
-        <p>{{ product.price}}</p>
-      </div>
+  class="fixed border-l-4 top-0 right-0 z-40 w-72 h-screen p-4 overflow-y-auto transition-transform bg-gray-800"
+  [class.translate-x-full]="hideSideMenu()"
+>
+  <div class="flex justify-between items-center text-white mb-4">
+    <p class="text-xl font-bold">My Cart</p>
+    <button class="p-2 border rounded relative" (click)="toogleSideMenu()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6 text-white"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <div *ngFor="let product of cart()" class="flex items-center mb-4 p-2 bg-gray-700 rounded-lg">
+    <img src="{{product.images[0]}}" alt="{{product.title}}" class="w-16 h-16 object-cover rounded-md mr-3">
+    <div class="flex flex-col">
+      <p class="text-white font-semibold">{{product.title}}</p>
+      <p class="text-gray-300">${{ product.price | number:'1.2-2' }}</p>
     </div>
+  </div>
+
+  <div class="mt-auto text-white text-lg font-bold"> 
+    <p>Total: ${{total() | number:'1.2-2'}}</p>
+  </div>
+</div>
 
   </nav>
 </header>

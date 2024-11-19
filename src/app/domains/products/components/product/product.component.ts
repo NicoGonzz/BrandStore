@@ -16,8 +16,16 @@ export class ProductComponent {
 
     @Output() addToCart = new EventEmitter();
 
+    ngOnInit(): void {
+      this.rating = this.generateRandomRating();
+    }
+
     addToCartHandler(){
       this.addToCart.emit(this.product);
+    }
+
+    private generateRandomRating(): number {
+      return Math.floor(Math.random() * 5) + 1;
     }
 
     get filledStars() {
