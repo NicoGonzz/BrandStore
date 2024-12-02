@@ -1,0 +1,22 @@
+.mobile-menu {
+    display: flex;
+    justify-content: flex-end; 
+  }
+  
+  .menu-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background: none; 
+    border: none; 
+    color: white;
+    cursor: pointer; 
+  }
+  
+  @media (min-width: 1024px) {
+    .mobile-menu {
+      display: none; 
+    }
+  }
+  

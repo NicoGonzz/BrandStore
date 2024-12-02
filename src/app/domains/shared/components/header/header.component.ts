@@ -18,6 +18,7 @@ export class HeaderComponent {
   private cartService = inject(CartService);
   cart = this.cartService.cart;
   total = this.cartService.total;
+  isMobileMenuOpen: boolean = false;
 
   constructor(){
     const today = new Date();
@@ -40,6 +41,18 @@ export class HeaderComponent {
     this.hideSideMenu.update(prevState => !prevState);
   }
 
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
 
+  redirectTo(event: MouseEvent): void {
+    event.preventDefault();
+    const target = event.target as HTMLAnchorElement;
+    const href = target.getAttribute('href');
+    if (href) {
+      window.location.href = href; 
+    }
+    this.toggleMobileMenu();
+  }
 
 }

@@ -1,0 +1,25 @@
+/* Base Styles (Mobile First) */
+.product-list {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 1.25rem;
+    padding: 1rem; 
+  }
+  
+  /* Tablet (min-width: 640px) */
+  @media (min-width: 640px) {
+    .product-list {
+      grid-template-columns: repeat(2, 1fr); 
+    }
+  }
+  
+  /* Desktop (min-width: 1024px) */
+  @media (min-width: 1024px) {
+    .product-list {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2.5rem; 
+      margin-left: 2rem; 
+      margin-top: 1.25rem; 
+    }
+  }
+  
