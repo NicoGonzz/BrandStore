@@ -13,6 +13,15 @@
     color: white;
     cursor: pointer; 
   }
+
+  .active-logo img {
+  filter: invert(1); 
+  }
+
+  img {
+  filter: invert(0.5); 
+  }
+
   
   @media (min-width: 1024px) {
     .mobile-menu {

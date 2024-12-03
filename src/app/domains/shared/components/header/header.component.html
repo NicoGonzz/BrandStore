@@ -3,9 +3,21 @@
     
     <!-- Logo -->
     <div class="flex lg:flex-1">
-      <a href="#" class="-m-1.5 p-1.5">
+      <a 
+        routerLink="/" 
+        routerLinkActive="active-logo" 
+        class="-m-1.5 p-1.5"
+        [routerLinkActiveOptions]="{ exact: true }">
         <span class="sr-only">Brand Store</span>
-        <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=white&shade=600" alt="">
+        <img
+          class="h-8 w-auto transition-colors duration-300"
+          [ngClass]="{
+            'text-white': router.url === '/',
+            'text-gray-500': router.url !== '/'
+          }"
+          src="https://tailwindui.com/plus/img/logos/mark.svg?color=white&shade=600"
+          alt="Logo"
+        />
       </a>
     </div>
 
@@ -31,23 +43,26 @@
                 </svg>
               </div>
               <div class="flex-auto">
-                <a href="#" class="block font-semibold text-white">Analytics</a>
-                <p class="mt-1 text-gray-400">Get a better understanding of your traffic</p>
+                <a routerLink="/about" 
+                routerLinkActive="underline"
+                class="block font-semibold text-white">About</a>
+                <p class="mt-1 text-gray-400">Get a better understanding of our website</p>
               </div>
             </div>
           </div>
         </div>
       </div>
       <!-- Pricing Link -->
-      <a href="#" class="text-sm font-semibold text-white">Payment gateways</a>
+      <a routerLink="/about" routerLinkActive="underline" class="text-sm font-semibold text-white">About</a>
+      <a routerLink="/payment-gateways" routerLinkActive="underline" class="text-sm font-semibold text-white">Payment gateways</a>
       <!-- Docs Link -->
-      <a href="#" class="text-sm font-semibold text-white">Docs</a>
-      <a href="#" class="text-sm font-semibold text-white">{{currentDate| timeAgo}}</a>
+      <a routerLink="/docs" routerLinkActive="underline" class="text-sm font-semibold text-white">Docs</a>
+      <a class="text-sm font-semibold text-white">{{currentDate| timeAgo}}</a>
     </div>
 
     <!-- Sign-in/Sign-up buttons -->
     <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-      <a href="#" class="text-sm font-semibold text-white">Log in <span aria-hidden="true">&rarr;</span></a>
+      <a routerLink="/sign-in" routerLinkActive="underline" class="text-sm font-semibold text-white">Log in <span aria-hidden="true">&rarr;</span></a>
     </div>
 
     <!-- Cart button -->
@@ -83,10 +98,11 @@
             </button>
           </div>
           <div class="flex flex-col p-4 space-y-4">
-            <a href="/product" class="block py-2 text-sm font-semibold text-gray-300 hover:text-white" (click)="redirectTo($event)">Product</a>
-            <a href="/payment-gateways" class="block py-2 text-sm font-semibold text-gray-300 hover:text-white" (click)="redirectTo($event)">Payment gateways</a>
-            <a href="/docs" class="block py-2 text-sm font-semibold text-gray-300 hover:text-white" (click)="redirectTo($event)">Docs</a>
-            <a href="/login" class="block py-2 text-sm font-semibold text-gray-300 hover:text-white" (click)="redirectTo($event)">Log in</a>
+            <a routerLink="/product" class="block py-2 text-sm font-semibold text-gray-300 hover:text-white">Product</a>
+            <a routerLink="/about" class="block py-2 text-sm font-semibold text-gray-300 hover:text-white">About</a>
+            <a routerLink="/payment-gateways" class="block py-2 text-sm font-semibold text-gray-300 hover:text-white">Payment gateways</a>
+            <a routerLink="/docs" class="block py-2 text-sm font-semibold text-gray-300 hover:text-white">Docs</a>
+            <a routerLink="/login" class="block py-2 text-sm font-semibold text-gray-300 hover:text-white">Log in</a>
           </div>
         </div>
         

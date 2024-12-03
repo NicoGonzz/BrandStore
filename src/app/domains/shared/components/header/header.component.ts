@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, Input, signal, SimpleChanges } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { TimeAgoPipe } from '@shared/pipes/time-ago.pipe';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule,TimeAgoPipe],
+  imports: [CommonModule,TimeAgoPipe,RouterLink,RouterLinkActive],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
@@ -20,7 +21,9 @@ export class HeaderComponent {
   total = this.cartService.total;
   isMobileMenuOpen: boolean = false;
 
-  constructor(){
+  constructor(
+    public router: Router
+  ){
     const today = new Date();
     this.currentDate = today.toISOString().split('T')[0]
   }
