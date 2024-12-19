@@ -1,4 +1,13 @@
 <app-header></app-header>
+
+<div class="categories-container">
+    <ul class="categories">
+        <li *ngFor="let category of categories()" class="category-item">
+            <a href="">{{ category.name }}</a>
+        </li>
+    </ul>
+</div>
+
 <div class="product-list grid gap-5 p-4">
     <app-product
         *ngFor="let product of products()"
