@@ -49,16 +49,22 @@ export class ListComponent {
     });
   }
 
-  private getCategories(){
+  private getCategories() {
     this.categoryService.getAll()
-    .subscribe({
-      next: (data) =>{
-        console.log(data)
-        this.categories.set(data)
-      },
-      error : () =>{
-      } 
-    });
+      .subscribe({
+        next: (data) => {
+          // Elimina categorías duplicadas por nombre
+          const uniqueCategories = Array.from(
+            new Map(data.map(category => [category.name, category])).values()
+          );
+          console.log(uniqueCategories);
+          this.categories.set(uniqueCategories);
+        },
+        error: () => {
+          console.error('Error al obtener las categorías');
+        }
+      });
   }
+  
 
 }
