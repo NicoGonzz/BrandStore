@@ -5,7 +5,6 @@ import { ProductComponent } from '@product/components/product/product.component'
 import { HeaderComponent } from '@shared/components/header/header.component';
 import { CartService } from '@shared/services/cart.service';
 import { ProductService } from '@shared/services/product.service';
-import { error } from 'console';
 import { CategoryService } from '@shared/services/category.service';
 import { Category } from '@shared/models/category.model';
 
@@ -42,7 +41,7 @@ export class ListComponent {
     this.productService.getProducts()
     .subscribe({
       next: (products) =>{
-        this.products.set(products)
+        this.products.set(products);
       },
       error : () =>{
       } 
@@ -53,11 +52,9 @@ export class ListComponent {
     this.categoryService.getAll()
       .subscribe({
         next: (data) => {
-          // Elimina categorías duplicadas por nombre
           const uniqueCategories = Array.from(
             new Map(data.map(category => [category.name, category])).values()
           );
-          console.log(uniqueCategories);
           this.categories.set(uniqueCategories);
         },
         error: () => {

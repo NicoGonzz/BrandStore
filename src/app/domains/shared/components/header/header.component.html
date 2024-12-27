@@ -129,10 +129,14 @@
   </div>
 
   <div *ngFor="let product of cart()" class="flex items-center mb-4 p-2 bg-gray-700 rounded-lg">
-    <img src="{{product.images[0]}}" alt="{{product.title}}" class="w-16 h-16 object-cover rounded-md mr-3">
+    <div [style.background-image]="'url(' + product.images[0] + ')'" 
+         [style.background-size]="'cover'"
+         [style.background-position]="'center'"
+         class="w-16 h-16 rounded-md mr-3">
+    </div>
     <div class="flex flex-col">
       <p class="text-white font-semibold">{{product.title}}</p>
-      <p class="text-gray-300">${{ product.price | number:'1.2-2' }}</p>
+      <p class="text-gray-300">${{ product.price| number:'1.2-2' }}</p>
     </div>
   </div>
 
