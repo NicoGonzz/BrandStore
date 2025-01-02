@@ -14,11 +14,11 @@ export const routes: Routes = [
        children: [
         {
         path: '',
-        component: ListComponent
+        loadComponent: ()=> import('./domains/products/pages/list/list.component').then(m => m.ListComponent)
         },
         {
         path: 'about',
-        component: AboutComponent
+        loadComponent: ()=> import('./domains/info/pages/about/about.component').then(m => m.AboutComponent)
         },
         {
         path: 'product/:id',
@@ -26,7 +26,7 @@ export const routes: Routes = [
         },
         {
         path: 'payment-gateways',
-        component: PaymentGatewaysComponent
+        loadComponent: ()=> import('./domains/info/pages/payment-gateways/payment-gateways.component').then(m => m.PaymentGatewaysComponent)
         }, 
        ]
     },
