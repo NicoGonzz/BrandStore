@@ -1,10 +1,10 @@
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 import { Component, Input, signal, OnInit, OnDestroy, PLATFORM_ID, Inject, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-counter',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './counter.component.html',
   styleUrls: ['./counter.component.css']
 })

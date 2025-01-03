@@ -5,16 +5,17 @@
         alt="Product Image"
         class="w-full object-cover object-center rounded"
         [src]="cover()"
-      />
+        />
     </div>
     <div class="grid grid-cols-3 gap-3">
-      <img
-        *ngFor="let image of product()?.images"
-        [src]="image"
-        (click)="changeCover(image)"
-        [class.border-gray-800]="image === cover()"
-        class="w-full h-24 object-cover object-center rounded border-2 border-gray-200 hover:scale-105 transition-transform"
-      />
+      @for (image of product()?.images; track image) {
+        <img
+          [src]="image"
+          (click)="changeCover(image)"
+          [class.border-gray-800]="image === cover()"
+          class="w-full h-24 object-cover object-center rounded border-2 border-gray-200 hover:scale-105 transition-transform"
+          />
+      }
     </div>
   </div>
 
@@ -35,7 +36,7 @@
       <button
         (click)="addToCart()"
         class="text-white bg-gray-800 border-0 py-3 px-8 focus:outline-none hover:bg-gray-500 rounded"
-      >
+        >
         Add To Cart
       </button>
     </div>

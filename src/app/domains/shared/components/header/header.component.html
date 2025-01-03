@@ -1,11 +1,11 @@
 <header class="bg-gray-800">
   <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
-    
+
     <!-- Logo -->
     <div class="flex lg:flex-1">
-      <a 
-        routerLink="/" 
-        routerLinkActive="active-logo" 
+      <a
+        routerLink="/"
+        routerLinkActive="active-logo"
         class="-m-1.5 p-1.5"
         [routerLinkActiveOptions]="{ exact: true }">
         <span class="sr-only">Brand Store</span>
@@ -17,7 +17,7 @@
           }"
           src="https://tailwindui.com/plus/img/logos/mark.svg?color=white&shade=600"
           alt="Logo"
-        />
+          />
       </a>
     </div>
 
@@ -32,25 +32,27 @@
           </svg>
         </button>
         <!-- Dropdown Content -->
-        <div *ngIf="isDropdownOpen" class="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-gray-800 shadow-lg ring-1 ring-gray-900/5">
-          <div class="p-4">
-            <!-- Analytics Item -->
-            <div class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-700">
-              <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-gray-700 group-hover:bg-gray-800">
-                <svg class="h-6 w-6 text-white group-hover:text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z" />
-                </svg>
-              </div>
-              <div class="flex-auto">
-                <a routerLink="/about" 
-                routerLinkActive="underline"
-                class="block font-semibold text-white">About</a>
-                <p class="mt-1 text-gray-400">Get a better understanding of our website</p>
+        @if (isDropdownOpen) {
+          <div class="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-gray-800 shadow-lg ring-1 ring-gray-900/5">
+            <div class="p-4">
+              <!-- Analytics Item -->
+              <div class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-700">
+                <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-gray-700 group-hover:bg-gray-800">
+                  <svg class="h-6 w-6 text-white group-hover:text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z" />
+                  </svg>
+                </div>
+                <div class="flex-auto">
+                  <a routerLink="/about"
+                    routerLinkActive="underline"
+                  class="block font-semibold text-white">About</a>
+                  <p class="mt-1 text-gray-400">Get a better understanding of our website</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        }
       </div>
       <!-- Pricing Link -->
       <a routerLink="/about" routerLinkActive="underline" class="text-sm font-semibold text-white">About</a>
@@ -72,78 +74,84 @@
       </svg>
       <span class="sr-only">Carrito</span>
 
-      <span *ngIf="cart().length > 0" class="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
-        {{ cart().length }}
-      </span>
+      @if (cart().length > 0) {
+        <span class="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+          {{ cart().length }}
+        </span>
+      }
     </button>
 
-     <!-- Mobile menu button -->
-        <div class="mobile-menu">
-          <button type="button" class="menu-button" (click)="toggleMobileMenu()">
-            <span class="sr-only">Open main menu</span>
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+    <!-- Mobile menu button -->
+    <div class="mobile-menu">
+      <button type="button" class="menu-button" (click)="toggleMobileMenu()">
+        <span class="sr-only">Open main menu</span>
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+
+    @if (isMobileMenuOpen) {
+      <div class="absolute top-0 right-0 bg-gray-800 text-white w-64 h-auto z-50 rounded-lg shadow-lg">
+        <div class="flex justify-between items-center p-4 border-b border-gray-700">
+          <span class="text-lg font-semibold">Menu</span>
+          <button type="button" (click)="toggleMobileMenu()" class="text-gray-300 hover:text-white">
+            <span class="sr-only">Close menu</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
-        
-        <div *ngIf="isMobileMenuOpen" class="absolute top-0 right-0 bg-gray-800 text-white w-64 h-auto z-50 rounded-lg shadow-lg">
-          <div class="flex justify-between items-center p-4 border-b border-gray-700">
-            <span class="text-lg font-semibold">Menu</span>
-            <button type="button" (click)="toggleMobileMenu()" class="text-gray-300 hover:text-white">
-              <span class="sr-only">Close menu</span>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-          <div class="flex flex-col p-4 space-y-4">
-            <a routerLink="/product" class="block py-2 text-sm font-semibold text-gray-300 hover:text-white">Product</a>
-            <a routerLink="/about" class="block py-2 text-sm font-semibold text-gray-300 hover:text-white">About</a>
-            <a routerLink="/payment-gateways" class="block py-2 text-sm font-semibold text-gray-300 hover:text-white">Payment gateways</a>
-            <a routerLink="/docs" class="block py-2 text-sm font-semibold text-gray-300 hover:text-white">Docs</a>
-            <a routerLink="/login" class="block py-2 text-sm font-semibold text-gray-300 hover:text-white">Log in</a>
-          </div>
+        <div class="flex flex-col p-4 space-y-4">
+          <a routerLink="/product" class="block py-2 text-sm font-semibold text-gray-300 hover:text-white">Product</a>
+          <a routerLink="/about" class="block py-2 text-sm font-semibold text-gray-300 hover:text-white">About</a>
+          <a routerLink="/payment-gateways" class="block py-2 text-sm font-semibold text-gray-300 hover:text-white">Payment gateways</a>
+          <a routerLink="/docs" class="block py-2 text-sm font-semibold text-gray-300 hover:text-white">Docs</a>
+          <a routerLink="/login" class="block py-2 text-sm font-semibold text-gray-300 hover:text-white">Log in</a>
         </div>
-        
-      
+      </div>
+    }
+
+
     <!-- Side Menu -->
     <div
-  class="fixed border-l-4 top-0 right-0 z-40 w-72 h-screen p-4 overflow-y-auto transition-transform bg-gray-800"
-  [class.translate-x-full]="hideSideMenu()"
->
-  <div class="flex justify-between items-center text-white mb-4">
-    <p class="text-xl font-bold">My Cart</p>
-    <button class="p-2 border rounded relative" (click)="toogleSideMenu()">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="w-6 h-6 text-white"
+      class="fixed border-l-4 top-0 right-0 z-40 w-72 h-screen p-4 overflow-y-auto transition-transform bg-gray-800"
+      [class.translate-x-full]="hideSideMenu()"
       >
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button>
-  </div>
+      <div class="flex justify-between items-center text-white mb-4">
+        <p class="text-xl font-bold">My Cart</p>
+        <button class="p-2 border rounded relative" (click)="toogleSideMenu()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6 text-white"
+            >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
 
-  <div *ngFor="let product of cart()" class="flex items-center mb-4 p-2 bg-gray-700 rounded-lg">
-    <div [style.background-image]="'url(' + product.images[0] + ')'" 
-         [style.background-size]="'cover'"
-         [style.background-position]="'center'"
-         class="w-16 h-16 rounded-md mr-3">
-    </div>
-    <div class="flex flex-col">
-      <p class="text-white font-semibold">{{product.title}}</p>
-      <p class="text-gray-300">${{ product.price| number:'1.2-2' }}</p>
-    </div>
-  </div>
+      @for (product of cart(); track product) {
+        <div class="flex items-center mb-4 p-2 bg-gray-700 rounded-lg">
+          <div [style.background-image]="'url(' + product.images[0] + ')'"
+            [style.background-size]="'cover'"
+            [style.background-position]="'center'"
+            class="w-16 h-16 rounded-md mr-3">
+          </div>
+          <div class="flex flex-col">
+            <p class="text-white font-semibold">{{product.title}}</p>
+            <p class="text-gray-300">${{ product.price| number:'1.2-2' }}</p>
+          </div>
+        </div>
+      }
 
-  <div class="mt-auto text-white text-lg font-bold"> 
-    <p>Total: ${{total() | number:'1.2-2'}}</p>
-  </div>
-</div>
+      <div class="mt-auto text-white text-lg font-bold">
+        <p>Total: ${{total() | number:'1.2-2'}}</p>
+      </div>
+    </div>
 
   </nav>
 </header>
