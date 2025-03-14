@@ -22,6 +22,10 @@ export const routes: Routes = [
         loadComponent: ()=> import('./domains/info/pages/about/about.component').then(m => m.AboutComponent)
         },
         {
+        path: 'locations',
+        loadComponent: ()=> import('./domains/locations/locations.component').then(m => m.LocationsComponent)
+        },
+        {
         path: 'sign-in',
         loadComponent: ()=> import('./domains/info/pages/sign-in/sign-in.component').then(m => m.SignInComponent)
         },

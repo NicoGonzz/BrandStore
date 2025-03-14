@@ -1,0 +1,10 @@
+<div class="location-container">
+  <mat-form-field class="ubication">
+    <mat-label>Buscar ubicación</mat-label>
+    <input matInput #searchInput type="text" placeholder="Escribe una ubicación" />
+  </mat-form-field>
+
+  <google-map height="500px" width="100%" [center]="center()" [zoom]="zoom()">
+    <map-marker *ngIf="selectedLocation() !== null" [position="selectedLocation()"></map-marker>
+  </google-map>
+</div>

@@ -1,0 +1,37 @@
+.location-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    position: relative; /* Añadido para posicionamiento absoluto del botón */
+  }
+  
+  .location-container mat-form-field {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 20px;
+  }
+  
+  .location-container google-map {
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .location-container button {
+    position: absolute; /* Posicionamiento absoluto */
+    top: 20px;
+    left: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .location-container button:hover {
+    background-color: #0056b3;
+  }
